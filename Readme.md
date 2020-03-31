@@ -1,7 +1,7 @@
 # Личный проект «Киноман» [![Build status][travis-image]][travis-url]
 
-* Студент: [Неопознанный енот](https://up.htmlacademy.ru/ecmascript/11/user/1177327).
-* Наставник: `Неизвестно`.
+* Студент: [Евгений Пак](https://up.htmlacademy.ru/ecmascript/11/user/1177327).
+* Наставник: `Михаил Семиколенов`.
 
 ---
 
