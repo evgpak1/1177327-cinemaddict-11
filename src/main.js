@@ -79,12 +79,21 @@ const getMostCommentedTemplate = () => (
   </section>`
 );
 
+const getFilmsNum = () => '130 291 movies inside';
+
+const getFooterStatsTemplate = () => (
+  `<section class="footer__statistics">
+    <p>${getFilmsNum()}</p>
+  </section>`
+);
+
 const render = (container, template, position = `beforeend`) => {
   container.insertAdjacentHTML(position, template);
 };
 
 const headerElement = document.querySelector(`.header`);
 const mainElement = document.querySelector(`.main`);
+const footerElement = document.querySelector(`.footer`);
 
 render(headerElement, getProfileTemplate());
 render(mainElement, getMenuTemplate());
@@ -92,6 +101,11 @@ render(mainElement, getSortingTemplate());
 render(mainElement, getFilmsTemplate());
 
 const filmsElement = document.querySelector(`.films`);
+
+/**
+ * Отрисовка фильмов в верхней части
+ */
+
 const filmListElement = filmsElement.querySelector(`.films-list`);
 const filmsContainerElement = filmListElement.querySelector(`.films-list__container`);
 
@@ -101,7 +115,7 @@ for (let i = 0; i < ALL_MOVIES_NUM; i++) {
 
 render(filmListElement, getShowMoreButtonTemplate());
 
-/*
+/**
  * Отрисовка элементов Top Rated и Most Commented
  */
 
@@ -111,8 +125,15 @@ render(filmsElement, getMostCommentedTemplate());
 const extraFilmsElements = filmsElement.querySelectorAll(`.films-list--extra`);
 
 for (let i = 0; i < extraFilmsElements.length; i++) {
-  let filmContainer = extraFilmsElements[i].querySelector('.films-list__container');
+  let filmContainer = extraFilmsElements[i].querySelector(`.films-list__container`);
   for (let j = 0; j < EXTRA_FILMS_NUM; j++) {
     render(filmContainer, getFilmCardTemplate());
   }
 }
+
+/**
+ * Отрисовка футера
+ */
+
+const footerStatsElement = footerElement.querySelector(`.footer__statistics`);
+render(footerStatsElement, getFooterStatsTemplate());
