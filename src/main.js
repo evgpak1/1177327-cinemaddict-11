@@ -79,7 +79,7 @@ const getMostCommentedTemplate = () => (
   </section>`
 );
 
-const getFilmsNum = () => '130 291 movies inside';
+const getFilmsNum = () => `130 291 movies inside`;
 
 const getFooterStatsTemplate = () => (
   `<section class="footer__statistics">
