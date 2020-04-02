@@ -58,6 +58,10 @@ const getFilmCardTemplate = () => (
   </article>`
 );
 
+const getShowMoreButtonTemplate = () => (
+  `<button class="films-list__show-more">Show more</button>`
+);
+
 const render = (container, template, position = `beforeend`) => {
   container.insertAdjacentHTML(position, template);
 };
@@ -70,8 +74,11 @@ render(mainElement, getMenuTemplate());
 render(mainElement, getSortingTemplate());
 render(mainElement, getFilmsTemplate());
 
-const filmsContainer = document.querySelector(`.films .films-list__container`);
+const filmListElement = document.querySelector(`.films .films-list`);
+const filmsContainerElement = filmListElement.querySelector(`.films-list__container`);
 
 for (let i = 0; i < ALL_MOVIES_NUM; i++) {
-  render(filmsContainer, getFilmCardTemplate());
+  render(filmsContainerElement, getFilmCardTemplate());
 }
+
+render(filmListElement, getShowMoreButtonTemplate());
