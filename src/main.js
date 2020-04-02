@@ -30,3 +30,10 @@ const getSortingTemplate = () => (
 const render = (container, template, position = `beforeend`) => {
   container.insertAdjacentHTML(position, template);
 };
+
+const mainElement = document.querySelector(`.main`);
+const headerElement = document.querySelector(`.header`);
+
+render(headerElement, getProfileTemplate());
+render(mainElement, getMenuTemplate());
+render(mainElement, getSortingTemplate());
