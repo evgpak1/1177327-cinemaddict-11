@@ -26,3 +26,7 @@ const getSortingTemplate = () => (
     <li><a href="#" class="sort__button">Sort by rating</a></li>
   </ul>`
 );
+
+const render = (container, template, position = `beforeend`) => {
+  container.insertAdjacentHTML(position, template);
+};
