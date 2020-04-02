@@ -1,6 +1,7 @@
 'use strict';
 
 const ALL_MOVIES_NUM = 5;
+const EXTRA_FILMS_NUM = 2;
 
 const getProfileTemplate = () => (
   `<section class="header__profile profile">
@@ -62,6 +63,22 @@ const getShowMoreButtonTemplate = () => (
   `<button class="films-list__show-more">Show more</button>`
 );
 
+const getTopRatedTemplate = () => (
+  `<section class="films-list--extra">
+    <h2 class="films-list__title">Top rated</h2>
+
+    <div class="films-list__container"></div>
+  </section>`
+);
+
+const getMostCommentedTemplate = () => (
+  `<section class="films-list--extra">
+    <h2 class="films-list__title">Most commented</h2>
+
+    <div class="films-list__container"></div>
+  </section>`
+);
+
 const render = (container, template, position = `beforeend`) => {
   container.insertAdjacentHTML(position, template);
 };
@@ -74,7 +91,8 @@ render(mainElement, getMenuTemplate());
 render(mainElement, getSortingTemplate());
 render(mainElement, getFilmsTemplate());
 
-const filmListElement = document.querySelector(`.films .films-list`);
+const filmsElement = document.querySelector(`.films`);
+const filmListElement = filmsElement.querySelector(`.films-list`);
 const filmsContainerElement = filmListElement.querySelector(`.films-list__container`);
 
 for (let i = 0; i < ALL_MOVIES_NUM; i++) {
@@ -82,3 +100,19 @@ for (let i = 0; i < ALL_MOVIES_NUM; i++) {
 }
 
 render(filmListElement, getShowMoreButtonTemplate());
+
+/*
+ * Отрисовка элементов Top Rated и Most Commented
+ */
+
+render(filmsElement, getTopRatedTemplate());
+render(filmsElement, getMostCommentedTemplate());
+
+const extraFilmsElements = filmsElement.querySelectorAll(`.films-list--extra`);
+
+for (let i = 0; i < extraFilmsElements.length; i++) {
+  let filmContainer = extraFilmsElements[i].querySelector('.films-list__container');
+  for (let j = 0; j < EXTRA_FILMS_NUM; j++) {
+    render(filmContainer, getFilmCardTemplate());
+  }
+}
