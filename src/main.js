@@ -1,5 +1,7 @@
 'use strict';
 
+const ALL_MOVIES_NUM = 5;
+
 const getProfileTemplate = () => (
   `<section class="header__profile profile">
     <p class="profile__rating">Movie Buff</p>
@@ -66,3 +68,10 @@ const mainElement = document.querySelector(`.main`);
 render(headerElement, getProfileTemplate());
 render(mainElement, getMenuTemplate());
 render(mainElement, getSortingTemplate());
+render(mainElement, getFilmsTemplate());
+
+const filmsContainer = document.querySelector(`.films .films-list__container`);
+
+for (let i = 0; i < ALL_MOVIES_NUM; i++) {
+  render(filmsContainer, getFilmCardTemplate());
+}
